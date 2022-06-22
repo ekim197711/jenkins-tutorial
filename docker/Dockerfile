@@ -1,2 +1,2 @@
-FROM nginx
-ARG somearg=somevalue
+FROM jenkins/jenkins:alpine
+RUN apt install -y nodejs
