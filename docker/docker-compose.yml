@@ -4,8 +4,4 @@ services:
   jenkins-master:
     image: jenkins/jenkins:alpine
     ports:
-      - 8080:8080
-  nginx:
-    image: nginx:latest
-    ports:
-      - 8090:80
+      - 8080:8080  
