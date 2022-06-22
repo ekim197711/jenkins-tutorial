@@ -3,22 +3,29 @@ pipeline {
     stages {
         stage('Install') {
             steps {
+                 dir("./my-app") {
                 nodejs(nodeJSInstallationName: 'Node 16.x') {
-                sh 'cd ./my-app && npm install'
+                sh 'npm install'
                 }
+                 }
             }
         }
         stage('Build') {
             steps {
+                
                 nodejs(nodeJSInstallationName: 'Node 16.x') {                
-                sh 'cd ./my-app && npm build'
+                     dir("./my-app") {
+                sh 'npm build'
                 }
+                 }
             }
         }
         stage('Test') { 
-            steps {
-                nodejs(nodeJSInstallationName: 'Node 16.x') {
-                sh 'cd ./my-app && CI=true npm test'
+            steps { 
+                dir("./my-app") {
+                   nodejs(nodeJSInstallationName: 'Node 16.x') {
+                    sh 'CI=true npm test'
+                    }
                 }
             }
         }
