@@ -1,17 +1,24 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Install') {
             steps {
                 nodejs(nodeJSInstallationName: 'Node 16.x') {
-                sh 'npm build'
+                sh 'cd ./my-app && npm install'
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                nodejs(nodeJSInstallationName: 'Node 16.x') {                
+                sh 'cd ./my-app && npm build'
                 }
             }
         }
         stage('Test') { 
             steps {
                 nodejs(nodeJSInstallationName: 'Node 16.x') {
-                sh 'CI=true npm test'
+                sh 'cd ./my-app && CI=true npm test'
                 }
             }
         }
