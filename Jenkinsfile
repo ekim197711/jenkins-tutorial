@@ -3,10 +3,9 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                 
                 nodejs(nodeJSInstallationName: 'Node 16.x') {
                     dir("./my-app") {
-                sh 'npm ci'
+                    sh 'npm ci'
                 }
                  }
             }
@@ -16,7 +15,7 @@ pipeline {
                 
                 nodejs(nodeJSInstallationName: 'Node 16.x') {                
                      dir("./my-app") {
-                sh 'npm build'
+                sh 'npm run build'
                 }
                  }
             }
@@ -26,7 +25,7 @@ pipeline {
                 
                    nodejs(nodeJSInstallationName: 'Node 16.x') {
                     dir("./my-app") {
-                    sh 'CI=true npm test'
+                    sh 'CI=true npm run test'
                     }
                 }
             }

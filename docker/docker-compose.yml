@@ -2,6 +2,6 @@ version: '3'
 
 services:
   jenkins-master:
-    image: jenkins/jenkins:alpine
+    image: jenkins/jenkins:latest
     ports:
       - 8080:8080  
